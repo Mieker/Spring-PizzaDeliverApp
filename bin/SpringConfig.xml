@@ -1,0 +1,43 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+	<bean id="consumerBean" class="Consumer">
+		<property name="name" value="Hawaian"/>
+		<property name="pizzaOrder">
+			<ref local="orderByPhone" />
+		</property>
+	</bean>
+
+	<bean id="orderByPhone" class="PizzaOrderedByPhone">
+		<property name="pizzaDelivery">
+			<ref local="deliveredByBike" />
+		</property>
+	</bean>
+
+	<bean id="orderByEmail" class="PizzaOrderedByEmail">
+		<property name="pizzaDelivery">
+			<ref local="deliveredByBike" />
+		</property>
+	</bean>
+
+
+	<bean id="deliveredByCar" class="DeliveredByCar">
+		<property name="pizzaBake">
+			<ref local="bannoli" />
+		</property>
+	</bean>
+
+	<bean id="deliveredByBike" class="DeliveredByBike">
+		<property name="pizzaBake">
+			<ref local="pizzaHut" />
+		</property>
+	</bean>
+
+	<bean id="pizzaHut" class="PizzaHut"></bean>
+	<bean id="bannoli" class="Bannoli"></bean>
+
+
+</beans>
